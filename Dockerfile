@@ -1,22 +1,14 @@
+# Use Java 21 runtime
+FROM eclipse-temurin:21-jre
 
-# Dockerfile
-# Build stage
-FROM maven:3.8.7-eclipse-temurin-17 AS build
-WORKDIR /workspace
-COPY pom.xml .
-COPY src ./src
-RUN mvn -B -DskipTests clean package
-
-# Runtime stage
-FROM eclipse-temurin:17-jre
+# Set working directory
 WORKDIR /app
-COPY --from=build /workspace/target/*.jar app.jar
-EXPOSE 8080
-ENTRYPOINT ["java","-jar","/app.jar"]
 
-FROM openjdk:21-jdk-slim
-WORKDIR /app
+# Copy JAR from target folder (built by GitHub Actions)
 COPY target/*.jar app.jar
-EXPOSE 9000
-ENTRYPOINT ["java", "-jar", "app.jar"]
 
+# Expose Spring Boot default port
+EXPOSE 8080
+
+# Run the application
+ENTRYPOINT ["java", "-jar", "app.jar"]
