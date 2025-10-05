@@ -8,7 +8,7 @@ on:
 
 env:
   DOCKER_IMAGE: springboot-lifeis
-  DOCKERHUB_USERNAME: hari7706shukla@gmail.com    # 👈 Change this to your Docker Hub username
+  DOCKERHUB_USERNAME: hari7706shukla   # 👈 Change this to your Docker Hub username
   DOCKERHUB_PASSWORD: haridocker      # 👈 Change this to your Docker Hub password (real one for your local use only)
 
 jobs:
@@ -79,3 +79,5 @@ jobs:
         echo "🐳 Docker Image: $DOCKERHUB_USERNAME/$DOCKER_IMAGE:latest"
         echo "⭐ Ready for deployment on Docker Hub!"
         echo "=========================================="
+
+
